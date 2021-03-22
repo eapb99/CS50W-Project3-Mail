@@ -1,0 +1,56 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/plugins/font-awesome-5.11.1/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/css/adminlte.min.css' %}">
+</head>
+<body class="hold-transition login-page">
+{% if message %}
+    <div>{{ message }}</div>
+{% endif %}
+<div class="login-box">
+    <div class="card card-outline card">
+        <div class="card-header text-center bg-gradient-yellow">
+        </div>
+        <form action="{% url 'register' %}" method="post">
+            <div class="card-body">
+                <p class="login-box-msg"></p>
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email Address" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="confirmation"
+                           placeholder="Confirm Password">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Register">
+                </div>
+            </div>
+            <div class="card-footer">
+                Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+</div>
+<script src="{% static 'lib/adminlte-3.0.4/plugins/jquery/jquery-3.5.1.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'lib/adminlte-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'lib/adminlte-3.0.4/js/adminlte.min.js' %}"></script>
+</body>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+{% extends 'layout/side.html' %}
+{% load static %}
+{% block user %}
+    <li class="nav-item">
+        <a style="color: black" href="{% url 'logout' %}"> {{ user }} &nbsp;<i
+                class="fas fa-sign-out-alt"></i></a>
+    </li>
+{% endblock %}
+
+
+{% block title %}
+    Email
+{% endblock %}
+
+
+{% block side-bar %}
+    <li class="nav-item">
+        <a class="nav-link" id="inbox">
+            <i class="nav-icon fas fa-inbox"></i>
+            <p> Inbox </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="compose">
+            <i class="nav-icon fas fa-reply"></i>
+            <p> Compose </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="sent">
+            <i class="nav-icon fas fa-share-square"></i>
+            <p> Sent </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="archived">
+            <i class="nav-icon fas fa-archive"></i>
+            <p> Archived </p>
+        </a>
+    </li>
+{% endblock %}
+{% block subtitle %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="col" id="mail-content" style="width: auto">
+        <div class="d-flex justify-content-center">
+            <div class="card card-primary card-outline">
+                <div class="card-header" id="title">
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody id="emails-view">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="mail" class="card card-primary card-outline">
+    </div>
+
+    <div id="compose-view">
+        <div class="d-flex justify-content-center">
+            <div class="col-6">
+                <div class="card card-primary">
+                    <div class="card-header d-flex justify-content-center">
+                        <h3>New Email</h3>
+                    </div>
+                    <form id="compose-form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                From: <input disabled class="form-control" value="{{ request.user.email }}">
+                            </div>
+                            <div class="form-group">
+                                To: <input autofocus id="compose-recipients" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="compose-subject" placeholder="Subject">
+                            </div>
+                            <textarea style=" height:300px" class="form-control" id="compose-body" placeholder="Body"></textarea>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <input type="submit" class="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'mail/inbox6.js' %}"></script>
+{% endblock %}
+
+
